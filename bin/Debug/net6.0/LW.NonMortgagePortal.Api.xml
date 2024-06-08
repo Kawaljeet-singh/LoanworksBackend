@@ -1,0 +1,599 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LW.NonMortgagePortal.Api</name>
+    </assembly>
+    <members>
+        <member name="T:LoanworksBackend.AppSettings">
+            <summary>
+            App settings loaded from appsettings.json config files
+            </summary>
+        </member>
+        <member name="T:LoanworksBackend.Dal.IDbContext">
+            <summary>
+            Contract for the db contexts
+            </summary>
+        </member>
+        <member name="T:LoanworksBackend.Dal.LosDbContext">
+            <summary>
+            Db context that contains SqlConnection object to be used by ORM
+            </summary>
+        </member>
+        <member name="M:LoanworksBackend.Dal.LosDbContext.#ctor(Microsoft.Data.SqlClient.SqlConnection)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="connection"></param>
+        </member>
+        <member name="M:LoanworksBackend.Dal.LosDbContext.Dispose">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:LoanworksBackend.Dal.LosDbContext.Dispose(System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="isDispose"></param>
+        </member>
+        <member name="M:LoanworksBackend.Extensions.Helpers.GetAlphabetFromInt(System.Int32)">
+            <summary>
+            This extension class converts an int to an equivalent alphabet (e.g. 1=A, 2=B,..27=AA)
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:LoanworksBackend.Extensions.IModule">
+            <summary>
+            Defines the contract for a module declaration. Modules allow us to group common domains into same folder structure
+            for consistancy. This defines how to setup the modules and allows additional modules to be easily added in future.
+            </summary>
+        </member>
+        <member name="M:LoanworksBackend.Extensions.ModuleExtensions.RegisterModules(Microsoft.AspNetCore.Builder.WebApplicationBuilder)">
+            <summary>
+            Hooks up the DI services required
+            </summary>
+            <param name="builder"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LoanworksBackend.Extensions.ModuleExtensions.MapEndpoints(Microsoft.AspNetCore.Builder.WebApplication)">
+            <summary>
+            Hooks up the endpoint config for each module
+            </summary>
+            <param name="app"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LoanworksBackend.Extensions.ModuleExtensions.DiscoverModules">
+            <summary>
+            Reflect all the available modules in this app
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:LoanworksBackend.Modules.Applications.ApplicationsModule">
+            <summary>
+            Registers module for Application related functionality
+            </summary>
+        </member>
+        <member name="M:LoanworksBackend.Modules.Applications.ApplicationsModule.RegisterModules(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Register services
+            </summary>
+            <param name="services"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LoanworksBackend.Modules.Applications.ApplicationsModule.MapEndpoints(Microsoft.AspNetCore.Routing.IEndpointRouteBuilder)">
+            <summary>
+            Register API endpoints
+            </summary>
+            <param name="endpoints"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LoanworksBackend.Modules.Applications.Endpoints.GetAppBorrowerByAppIDEndPoint.Handle(System.Int32,MediatR.IMediator)">
+            <summary>
+            Returns AppBorrower Details based on given AppID 
+            </summary>
+            <param name="mediator"></param>
+            <param name="appId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LoanworksBackend.Modules.Applications.Endpoints.ApplicationBorrowers.GetAppBorrowerByIDEndPoint.Handle(System.Int32,MediatR.IMediator)">
+            <summary>
+             Returns AppBorrower Details based on given AppBorrower By Id
+            </summary>
+            <param name="mediator"></param>
+            <param name="borrowerId"></param>
+            <returns></returns>  
+        </member>
+        <member name="M:LoanworksBackend.Modules.Applications.Endpoints.GetAppIncomeByBorrowerIDEndPoint.Handle(System.Int32,MediatR.IMediator)">
+            <summary>
+            Returns AppIncome Details based on given BorrowerId
+            </summary>
+            <param name="mediator"></param>
+            <param name="borrowerId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LoanworksBackend.Modules.Applications.Endpoints.GetAppIncomeByIDEndPoint.Handle(System.Int32,MediatR.IMediator)">
+            <summary>
+            Returns ApplicationIncome Details based on given AppIncome By Id
+            </summary>
+            <param name="mediator"></param>
+            <param name="incomeId"></param>
+            <returns></returns>  
+        </member>
+        <member name="M:LoanworksBackend.Modules.Applications.Endpoints.ApplicationLiabilities.DeleteAppLiabilitiesEndPoint.Handle(System.Int32,MediatR.IMediator)">
+            <summary>
+            Delete AppLiabilities By LiabilityId 
+            </summary>
+            <param name="mediator"></param>
+            <param name="liabilityId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LoanworksBackend.Modules.Applications.Endpoints.ApplicationLiabilities.GetAppLiabilitiesByBorrowerIDEndPoint.Handle(System.Int32,MediatR.IMediator)">
+            <summary>
+            Returns AppLiabilities Details based on given BorrowerID 
+            </summary>
+            <param name="mediator"></param>
+            <param name="borrowerId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LoanworksBackend.Modules.Applications.Endpoints.ApplicationLiabilities.GetAppLiabilitiesByIDEndPoint.Handle(System.Int32,MediatR.IMediator)">
+            <summary>
+             Returns AppLiabilities Details based on given AppLiabilities By Id
+            </summary>
+            <param name="mediator"></param>
+            <param name="liabilityId"></param>
+            <returns></returns>  
+        </member>
+        <member name="M:LoanworksBackend.Modules.Applications.Endpoints.ApplicationLoans.DeleteApplicationLoanEndPoint.Handle(LoanworksBackend.Modules.Applications.Core.ApplicationLoans.ApplicationLoan,MediatR.IMediator)">
+            <summary>
+            Delete Record in ApplicationLoanClass
+            </summary>
+            <param name="mediator"></param>
+            <param name="DeleteApplicationLoanClass"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LoanworksBackend.Modules.Applications.Endpoints.ApplicationLoans.InsertApplicationLoanEndPoint.Handle(LoanworksBackend.Modules.Applications.Core.ApplicationLoans.ApplicationLoan,MediatR.IMediator)">
+            <summary>
+            Insert Record in Application Loan Class
+            </summary>
+            <param name="mediator"></param>
+            <param name="InsertApplicationLoanClass"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LoanworksBackend.Modules.Applications.Endpoints.GetAppProductByAppIDEndPoint.Handle(System.Int32,MediatR.IMediator)">
+            <summary>
+            Returns ApplicationProduct Details based on given AppID 
+            </summary>
+            <param name="mediator"></param>
+            <param name="appId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LoanworksBackend.Modules.Applications.Endpoints.GetAppProductByIDEndPoint.Handle(System.Int32,MediatR.IMediator)">
+            <summary>
+            Returns ApplicationProduct Details based on given AppProduct By Id
+            </summary>
+            <param name="mediator"></param>
+            <param name="appProductId"></param>
+            <returns></returns>  
+        </member>
+        <member name="M:LoanworksBackend.Modules.Applications.Endpoints.GetAppProductFeatureActiveEndPoint.Handle(System.Int32,System.Int32,MediatR.IMediator)">
+            <summary>
+            Returns ProductFeature Details based on given ProductId and AppProductId
+            </summary>
+            <param name="mediator"></param>
+            <param name="ProductId"></param>
+            <param name="AppProductId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LoanworksBackend.Modules.Applications.Endpoints.ApplicationProduct.GetAppProductFeesEndPoint.Handle(System.Int32,System.Int32,System.Int32,MediatR.IMediator)">
+            <summary>
+            Returns AppProductFees Details based on given AppID,legalcode and valuationcode
+            </summary>
+            <param name="mediator"></param>
+            <param name="appId"></param>
+            <param name="legalCode"></param>
+            <param name="valuationCode"></param>
+            <returns></returns>
+        </member>
+        <member name="T:LoanworksBackend.Modules.Applications.Endpoints.ApplicationSearchEndpoint">
+            <summary>
+            API Endpoint for searching applications
+            </summary>
+        </member>
+        <member name="M:LoanworksBackend.Modules.Applications.Endpoints.ApplicationSearchEndpoint.Handle(LoanworksBackend.Modules.Applications.Core.ApplicationSearchInput,MediatR.IMediator)">
+            <summary>
+            Searches applications in the system based on the filter input
+            </summary>
+            <param name="input"></param>
+            <param name="mediator"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LoanworksBackend.Modules.Applications.Endpoints.GetAppSecurityByAppIDEndPoint.Handle(System.Int32,MediatR.IMediator)">
+            <summary>
+            Returns AppSecurity Details based on given AppID 
+            </summary>
+            <param name="mediator"></param>
+            <param name="appId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LoanworksBackend.Modules.Applications.Endpoints.GetAppSecurityByIDEndPoint.Handle(System.Int32,MediatR.IMediator)">
+            <summary>
+            Returns ApplicationSecurity Details based on given AppSecurity By Id
+            </summary>
+            <param name="mediator"></param>
+            <param name="securityId"></param>
+            <returns></returns>  
+        </member>
+        <member name="M:LoanworksBackend.Modules.Applications.Endpoints.ApplicationSolicitors.GetAppSolicitorByAppIDEndPoint.Handle(System.Int32,System.Int32,MediatR.IMediator)">
+            <summary>
+            Returns AppSolicitor Details based on given AppID 
+            </summary>
+            <param name="mediator"></param>
+            <param name="userId"></param>
+            <param name="appId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LoanworksBackend.Modules.Applications.Endpoints.AppProductFunders.GetAppProductFundersByAppIDEndPoint.Handle(System.Int32,System.Int32,MediatR.IMediator)">
+            <summary>
+            Returns AppProductFunders Details based on given AppID 
+            </summary>
+            <param name="mediator"></param>
+            <param name="userId"></param>
+            <param name="appId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LoanworksBackend.Modules.Applications.Endpoints.GetAppStatusByAppIDEndPoint.Handle(System.Int32,MediatR.IMediator)">
+            <summary>
+            Returns ApplicationSatus Details based on given AppID
+            </summary>
+            <param name="mediator"></param>
+            <param name="appId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LoanworksBackend.Modules.Applications.Endpoints.Collateral_RealEstate.DeleteCollateralRealEstateEndPoint.Handle(System.Int32,MediatR.IMediator)">
+            <summary>
+            Delete CollateralRealEstate By Id 
+            </summary>
+            <param name="mediator"></param>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LoanworksBackend.Modules.Applications.Endpoints.Collateral_RealEstate.GetCollateralRealEstateByAppIDEndPoint.Handle(System.Int32,MediatR.IMediator)">
+            <summary>
+            Returns CollateralRealEstate Details based on given AppId
+            </summary>
+            <param name="mediator"></param>
+            <param name="appId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LoanworksBackend.Modules.Applications.Endpoints.Collateral_RealEstate.InsertCollateralRealEstateEndPoint.Handle(LoanworksBackend.Modules.Applications.Core.Collateral_RealEstate.InsertCollateralRealEstate,MediatR.IMediator)">
+            <summary>
+            Insert Record in Collateral RealEstate
+            </summary>
+            <param name="mediator"></param>
+            <param name="InsertCollateralRealEstate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LoanworksBackend.Modules.Applications.Endpoints.Collateral_RealEstate.UpdateCollateralRealEstateEndPoint.Handle(LoanworksBackend.Modules.Applications.Core.Collateral_RealEstate.UpdateCollateralRealEstate,MediatR.IMediator)">
+            <summary>
+            Update Record in Collateral RealEstate
+            </summary>
+            <param name="mediator"></param>
+            <param name="UpdateCollateralRealEstate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LoanworksBackend.Modules.Applications.Endpoints.Consultants.GetConsultantListUserByAppIDEndPoint.Handle(System.Int32,System.Int32,MediatR.IMediator)">
+            <summary>
+            Returns Role ConsultantListUser Details based on given AppID 
+            </summary>
+            <param name="mediator"></param>
+            <param name="userId"></param>
+            <param name="appId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LoanworksBackend.Modules.Applications.Endpoints.FeeExceptions.GetFeeExceptionsByAppIDEndPoint.Handle(System.Int32,System.Int32,System.Int32,MediatR.IMediator)">
+            <summary>
+            Returns AppProductFees Details based on given AppID,legalcode and valuationcode
+            </summary>
+            <param name="mediator"></param>
+            <param name="appId"></param>
+            <param name="legalCode"></param>
+            <param name="valuationCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LoanworksBackend.Modules.Applications.Endpoints.GetAppMainDetailsByAppIDEndPoint.Handle(System.Int32,MediatR.IMediator)">
+            <summary>
+            Returns AppMain Details based on given AppID 
+            </summary>
+            <param name="mediator"></param>
+            <param name="appId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LoanworksBackend.Modules.Applications.Endpoints.GetAppSummaryByAppIDEndPoint.Handle(System.Int32,MediatR.IMediator)">
+            <summary>
+            Returns AppSummary Details based on given AppID
+            </summary>
+            <param name="mediator"></param>
+            <param name="appId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LoanworksBackend.Modules.Applications.Endpoints.RestructuredLoanAmountDetails.GetAppRestructuredLoanAmountByAppIDEndPoint.Handle(System.Int32,MediatR.IMediator)">
+            <summary>
+            Returns Application RestructuredLoanAmount Calculation Details based on given AppId
+            </summary>
+            <param name="mediator"></param>
+            <param name="appId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LoanworksBackend.Modules.CreditCard.Endpoint.Application.DeleteCreditCardApplicationEndpoint.Handle(System.Int32,MediatR.IMediator)">
+            <summary>
+            Deletes Record in the Application Class
+            </summary>
+            <param name="mediator"></param>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LoanworksBackend.Modules.CreditCard.Endpoint.Application.GetCreditCardApplicationEndpoint.Handle(System.Int32,MediatR.IMediator)">
+            <summary>
+            Returns Application Class
+            </summary>
+            <param name="mediator"></param>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LoanworksBackend.Modules.CreditCard.Endpoint.Application.InsertCreditCardApplicationEndpoint.Handle(LoanworksBackend.Modules.CreditCard.Core.CreditCardApplication.CreditCardApplication,MediatR.IMediator)">
+            <summary>
+            Inserts Record in the Application Class
+            </summary>
+            <param name="mediator"></param>
+            <param name="ApplicationClass"></param>
+            <returns></returns>
+        </member>
+        <member name="T:LoanworksBackend.Modules.CreditCard.Endpoint.Application.ListAllCreditCardApplicationEndpoint">
+            <summary>
+            API endpoint that gets all the funds position for management
+            </summary>
+        </member>
+        <member name="M:LoanworksBackend.Modules.CreditCard.Endpoint.Application.ListAllCreditCardApplicationEndpoint.Handle(MediatR.IMediator)">
+            <summary>
+            Returns the list of Application Class
+            </summary>
+            <param name="mediator"></param>
+            <returns></returns>
+        </member>
+        <member name="T:LoanworksBackend.Modules.CreditCard.Endpoint.Application.UpdateCreditCardApplicationEndpoint">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:LoanworksBackend.Modules.CreditCard.Endpoint.Application.UpdateCreditCardApplicationEndpoint.Handle(LoanworksBackend.Modules.CreditCard.Core.CreditCardApplication.CreditCardApplication,MediatR.IMediator)">
+            <summary>
+            Updates Application Class
+            </summary>
+            <param name="ApplicationClass"></param>
+            <param name="mediator"></param>
+            <returns></returns>
+        </member>
+        <member name="T:LoanworksBackend.Modules.Extracts.CreditCardModule">
+            <summary>
+            Registers module for Management related functionality
+            </summary>
+        </member>
+        <member name="M:LoanworksBackend.Modules.Extracts.CreditCardModule.RegisterModules(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Register services
+            </summary>
+            <param name="services"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LoanworksBackend.Modules.Extracts.CreditCardModule.MapEndpoints(Microsoft.AspNetCore.Routing.IEndpointRouteBuilder)">
+            <summary>
+            Register API endpoints
+            </summary>
+            <param name="endpoints"></param>
+            <returns></returns>
+        </member>
+        <member name="T:LoanworksBackend.Modules.Extracts.ManagementModule">
+            <summary>
+            Registers module for Management related functionality
+            </summary>
+        </member>
+        <member name="M:LoanworksBackend.Modules.Extracts.ManagementModule.RegisterModules(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Register services
+            </summary>
+            <param name="services"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LoanworksBackend.Modules.Extracts.ManagementModule.MapEndpoints(Microsoft.AspNetCore.Routing.IEndpointRouteBuilder)">
+            <summary>
+            Register API endpoints
+            </summary>
+            <param name="endpoints"></param>
+            <returns></returns>
+        </member>
+        <member name="T:LoanworksBackend.Modules.Management.Core.Security.ProfileTaskAccessExtract">
+            <summary>
+            Summary record for the profile task access configuration for extract to excel
+            </summary>
+        </member>
+        <member name="T:LoanworksBackend.Modules.Management.Core.Security.SecurityExtractConfig">
+            <summary>
+            Contains roundup of the security extract entities for exporting
+            </summary>
+        </member>
+        <member name="T:LoanworksBackend.Modules.Management.Core.Security.UserMenuSecurityExtract">
+            <summary>
+            Contains all the fields on the extract of user menu security config
+            </summary>
+        </member>
+        <member name="T:LoanworksBackend.Modules.Management.Core.Workflow.WorkflowConfig">
+            <summary>
+            This contains a roundup summary of workflow data (from workflow, task, alert and notification entities)
+            </summary>
+        </member>
+        <member name="M:LoanworksBackend.Modules.Management.Endpoint.Management.DeleteApplicationClassEndpoint.Handle(System.Int32,MediatR.IMediator)">
+            <summary>
+            Deletes Record in the Application Class
+            </summary>
+            <param name="mediator"></param>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LoanworksBackend.Modules.Management.Endpoint.Management.GetApplicationClassEndpoint.Handle(System.Int32,MediatR.IMediator)">
+            <summary>
+            Returns Application Class
+            </summary>
+            <param name="mediator"></param>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LoanworksBackend.Modules.Management.Endpoint.Management.InsertApplicationClassEndpoint.Handle(LoanworksBackend.Modules.Management.Core.ApplicationClass.ApplicationClass,MediatR.IMediator)">
+            <summary>
+            Inserts Record in the Application Class
+            </summary>
+            <param name="mediator"></param>
+            <param name="ApplicationClass"></param>
+            <returns></returns>
+        </member>
+        <member name="T:LoanworksBackend.Modules.Management.Endpoint.Management.ListAllApplicationClassEndpoint">
+            <summary>
+            API endpoint that gets all the funds position for management
+            </summary>
+        </member>
+        <member name="M:LoanworksBackend.Modules.Management.Endpoint.Management.ListAllApplicationClassEndpoint.Handle(MediatR.IMediator)">
+            <summary>
+            Returns the list of Application Class
+            </summary>
+            <param name="mediator"></param>
+            <returns></returns>
+        </member>
+        <member name="T:LoanworksBackend.Modules.Management.Endpoint.Management.UpdateApplicationClassEndpoint">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:LoanworksBackend.Modules.Management.Endpoint.Management.UpdateApplicationClassEndpoint.Handle(LoanworksBackend.Modules.Management.Core.ApplicationClass.ApplicationClass,MediatR.IMediator)">
+            <summary>
+            Updates Application Class
+            </summary>
+            <param name="ApplicationClass"></param>
+            <param name="mediator"></param>
+            <returns></returns>
+        </member>
+        <member name="T:LoanworksBackend.Modules.Management.Endpoint.Management.DeleteApplicationCollateralClass">
+            <summary>
+            API endpoint that gets all the funds position for management
+            </summary>
+        </member>
+        <member name="M:LoanworksBackend.Modules.Management.Endpoint.Management.DeleteApplicationCollateralClass.Handle(System.Int32,MediatR.IMediator)">
+            <summary>
+            Delete Collateral Class assigned in Application Class
+            </summary>
+            <param name="mediator"></param>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:LoanworksBackend.Modules.Management.Endpoint.Management.GetApplicationCollateralClass">
+            <summary>
+            API endpoint that gets all the funds position for management
+            </summary>
+        </member>
+        <member name="M:LoanworksBackend.Modules.Management.Endpoint.Management.GetApplicationCollateralClass.Handle(System.Int32,MediatR.IMediator)">
+            <summary>
+            Returns Collateral Class assigned in Application Class
+            </summary>
+            <param name="id"></param>
+            <param name="mediator"></param>
+            <returns></returns>
+        </member>
+        <member name="T:LoanworksBackend.Modules.Management.Endpoint.Management.InsertApplicationCollateralClass">
+            <summary>
+            API endpoint that gets all the funds position for management
+            </summary>
+        </member>
+        <member name="M:LoanworksBackend.Modules.Management.Endpoint.Management.InsertApplicationCollateralClass.Handle(LoanworksBackend.Modules.Management.Core.ApplicationCollateralClass.ApplicationCollateralClassInsert,MediatR.IMediator)">
+            <summary>
+            Assign Collateral Class in Application Class
+            </summary>
+            <param name="mediator"></param>
+            <param name="applicationCollateralClass"></param>
+            <returns></returns>
+        </member>
+        <member name="T:LoanworksBackend.Modules.Management.Endpoint.Management.ListAllApplicationCollateralClass">
+            <summary>
+            API endpoint that gets all the funds position for management
+            </summary>
+        </member>
+        <member name="M:LoanworksBackend.Modules.Management.Endpoint.Management.ListAllApplicationCollateralClass.Handle(MediatR.IMediator)">
+            <summary>
+            Returns the list of Collateral Class assigned in Application Class
+            </summary>
+            <param name="mediator"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LoanworksBackend.Modules.Management.Endpoint.Management.DeleteApplicationTypesEndpoint.Handle(System.Int32,MediatR.IMediator)">
+            <summary>
+            Remove application type assigned in application class
+            </summary>
+            <param name="mediator"></param>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LoanworksBackend.Modules.Management.Endpoint.Management.GetApplicationTypesEndpoint.Handle(System.Int32,MediatR.IMediator)">
+            <summary>
+            Returns Application Types assigned in application
+            </summary>
+            <param name="mediator"></param>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LoanworksBackend.Modules.Management.Endpoint.Management.InsertApplicationTypesEndpoint.Handle(LoanworksBackend.Modules.Management.Core.ApplicationTypes.ApplicationTypesInsert,MediatR.IMediator)">
+            <summary>
+            Assigned type in Application
+            </summary>
+            <param name="mediator"></param>
+            <param name="ApplicationTypesInsert"></param>
+            <returns></returns>
+        </member>
+        <member name="T:LoanworksBackend.Modules.Management.Endpoint.Management.DeleteApplicationLoanClassEndpoint">
+            <summary>
+            API endpoint that gets all the funds position for management
+            </summary>
+        </member>
+        <member name="M:LoanworksBackend.Modules.Management.Endpoint.Management.DeleteApplicationLoanClassEndpoint.Handle(System.Int32,MediatR.IMediator)">
+            <summary>
+            Delete Record in Application Loan Class
+            </summary>
+            <param name="mediator"></param>
+            <param name="applicationClassId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:LoanworksBackend.Modules.Management.Endpoint.Management.GetApplicationLoanClassEndpoint">
+            <summary>
+            API endpoint that gets all the funds position for management
+            </summary>
+        </member>
+        <member name="M:LoanworksBackend.Modules.Management.Endpoint.Management.GetApplicationLoanClassEndpoint.Handle(System.Int32,MediatR.IMediator)">
+            <summary>
+            Returns the list of Loan Class in Application By specified ID
+            </summary>
+            <param name="mediator"></param>
+            <param name="applicationClassId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:LoanworksBackend.Modules.Management.Endpoint.Management.InsertApplicationLoanClassEndpoint">
+            <summary>
+            API endpoint that gets all the funds position for management
+            </summary>
+        </member>
+        <member name="M:LoanworksBackend.Modules.Management.Endpoint.Management.InsertApplicationLoanClassEndpoint.Handle(LoanworksBackend.Modules.Management.Core.Application_Loan.ApplicationLoanClassInsert,MediatR.IMediator)">
+            <summary>
+            Insert Record n Application Loan Class
+            </summary>
+            <param name="mediator"></param>
+            <param name="appLoanClassInsert"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

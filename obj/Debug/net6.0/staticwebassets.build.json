@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "Eqv3g0NxFcBneGHIYg3CAi1WP0Tk5y/cnWVPfcSmEt0=",
+  "Source": "LW.NonMortgagePortal.Api",
+  "BasePath": "_content/LW.NonMortgagePortal.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

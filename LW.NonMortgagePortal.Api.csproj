@@ -1,0 +1,83 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <Compile Remove="Modules\Management\Adapters\Funds\**" />
+	  <Content Remove="Modules\Management\Adapters\Funds\**" />
+	  <EmbeddedResource Remove="Modules\Management\Adapters\Funds\**" />
+	  <None Remove="Modules\Management\Adapters\Funds\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Remove="Modules\Applications\Core\ApplicationBorrower.cs" />
+	  <Compile Remove="Modules\Applications\Core\ApplicationIncome.cs" />
+	  <Compile Remove="Modules\Applications\Core\ApplicationSecurity.cs" />
+	  <Compile Remove="Modules\Applications\Core\ApplicationStatus.cs" />
+	  <Compile Remove="Modules\Applications\Core\AppProduct.cs" />
+	  <Compile Remove="Modules\Applications\Core\AppProductFeature.cs" />
+	  <Compile Remove="Modules\Applications\Endpoints\DeleteApplicationLoanEndPoint.cs" />
+	  <Compile Remove="Modules\Applications\Endpoints\GetAppBorrowerByAppIDEndPoint.cs" />
+	  <Compile Remove="Modules\Applications\Endpoints\GetAppBorrowerByIDEndPoint.cs" />
+	  <Compile Remove="Modules\Applications\Endpoints\GetAppIncomeByBorrowerIDEndPoint.cs" />
+	  <Compile Remove="Modules\Applications\Endpoints\GetAppIncomeByIDEndPoint.cs" />
+	  <Compile Remove="Modules\Applications\Endpoints\GetAppProductByAppIDEndPoint.cs" />
+	  <Compile Remove="Modules\Applications\Endpoints\GetAppProductByIDEndPoint.cs" />
+	  <Compile Remove="Modules\Applications\Endpoints\GetAppProductFeatureActiveEndPoint.cs" />
+	  <Compile Remove="Modules\Applications\Endpoints\GetAppSecurityByAppIDEndPoint.cs" />
+	  <Compile Remove="Modules\Applications\Endpoints\GetAppSecurityByIDEndPoint.cs" />
+	  <Compile Remove="Modules\Applications\Endpoints\GetAppStatusByAppIDEndPoint.cs" />
+	  <Compile Remove="Modules\Applications\Endpoints\InsertApplicationLoanEndPoint.cs" />
+	  <Compile Remove="Modules\Applications\Query\Applications\GetAppBorrowerByAppID.cs" />
+	  <Compile Remove="Modules\Applications\Query\Applications\GetAppBorrowerByID.cs" />
+	  <Compile Remove="Modules\Applications\Query\Applications\GetAppIncomeByBorrowerID.cs" />
+	  <Compile Remove="Modules\Applications\Query\Applications\GetAppIncomeByID.cs" />
+	  <Compile Remove="Modules\Applications\Query\Applications\GetAppProductByAppID.cs" />
+	  <Compile Remove="Modules\Applications\Query\Applications\GetAppProductByID.cs" />
+	  <Compile Remove="Modules\Applications\Query\Applications\GetAppProductFeatureActiveQuery.cs" />
+	  <Compile Remove="Modules\Applications\Query\Applications\GetAppSecurityByAppID.cs" />
+	  <Compile Remove="Modules\Applications\Query\Applications\GetAppSecurityByID.cs" />
+	  <Compile Remove="Modules\Applications\Query\Applications\GetAppStatusByAppID.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AspNetCore.HealthChecks.SqlServer" Version="6.0.2" />
+		<PackageReference Include="EPPlus" Version="4.5.2.1" />
+		<PackageReference Include="FluentValidation" Version="11.2.0" />
+		<PackageReference Include="Hellang.Middleware.ProblemDetails" Version="6.4.0" />
+		<PackageReference Include="MediatR" Version="10.0.1" />
+		<PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
+		<PackageReference Include="Polly" Version="7.2.3" />
+		<PackageReference Include="prometheus-net" Version="6.0.0" />
+		<PackageReference Include="prometheus-net.AspNetCore" Version="6.0.0" />
+		<PackageReference Include="RepoDb" Version="1.12.10" />
+		<PackageReference Include="RepoDb.SqlServer" Version="1.1.5" />
+		<PackageReference Include="RepoDb.SqlServer.BulkOperations" Version="1.1.6" />
+		<PackageReference Include="Serilog.AspNetCore" Version="6.0.1" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="Modules\CreditCard\README.md">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Modules\Management\README.md">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Modules\CreditCard\Adapters\" />
+	  <Folder Include="Modules\Management\Adapters\" />
+	</ItemGroup>
+
+	<PropertyGroup>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<NoWarn>$(NoWarn);1591</NoWarn>
+	</PropertyGroup>
+
+</Project>

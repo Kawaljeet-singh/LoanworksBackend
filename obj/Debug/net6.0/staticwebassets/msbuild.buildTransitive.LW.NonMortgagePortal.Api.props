@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\LW.NonMortgagePortal.Api.props" />
+</Project>
